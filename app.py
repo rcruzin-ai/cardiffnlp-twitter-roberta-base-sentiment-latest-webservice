@@ -15,7 +15,12 @@ analyzer = SentimentAnalyzer(REPO_PATH)
 params = st.experimental_get_query_params()
 text = params.get("text")
 
+
 if text:
+    
+    # Get the actual value of the text parameter
+    text = text[0]
+    
     # Analyze the text from the URL parameter
     label, score = analyzer.analyze_text(text)
     st.write({"model_output": label, "confidence_score": score})
